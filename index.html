@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu do Jardim</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="menu">
+        <h2>=== MENU DO JARDIM ===</h2>
+        <button onclick="mostrarFormularioComum()">1. Cadastrar planta comum</button>
+        <button onclick="mostrarFormularioInterior()">2. Cadastrar planta de interior</button>
+        <button onclick="mostrarLista()">3. Listar todas as plantas</button>
+        <button onclick="mostrarDeletar()">4. Deletar planta pelo nome</button>
+        <button onclick="sair()">5. Sair</button>
+    </section>
+
+    <section id="formulario" style="display:none;">
+        <form id="planta-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="tipo">Tipo:</label>
+            <input type="text" id="tipo" required>
+
+            <label for="frequencia">Frequência de Rega:</label>
+            <input type="number" id="frequencia" required>
+
+            <div id="campo-local">
+                <label for="local">Local:</label>
+                <input type="text" id="local">
+            </div>
+
+            <button type="submit">Salvar</button>
+        </form>
+    </section>
+
+    <section id="lista" style="display:none;">
+        <h3>🌱 Lista de Plantas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Frequência</th>
+                    <th>Local</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-corpo"></tbody>
+        </table>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
