@@ -1,56 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Menu do Jardim</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Controle de Jardim</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header>
+    <h1>Sistema de Controle de Jardim</h1>
+  </header>
 
-    <section id="menu">
-        <h2>=== MENU DO JARDIM ===</h2>
-        <button onclick="mostrarFormularioComum()">1. Cadastrar planta comum</button>
-        <button onclick="mostrarFormularioInterior()">2. Cadastrar planta de interior</button>
-        <button onclick="mostrarLista()">3. Listar todas as plantas</button>
-        <button onclick="mostrarDeletar()">4. Deletar planta pelo nome</button>
-        <button onclick="sair()">5. Sair</button>
-    </section>
+  <section id="menu">
+    <button onclick="mostrarFormulario()">1. Cadastrar Planta</button>
+    <button onclick="mostrarLista()">2. Listar Plantas</button>
+    <button onclick="mostrarDeletar()">3. Deletar Planta</button>
+    <button onclick="mostrarControleRega()">4. Controle de rega</button>
+    <button onclick="verTempoParaRega()">5. Ver tempo para próxima rega</button>
+  </section>
 
-    <section id="formulario" style="display:none;">
-        <form id="planta-form">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" required>
+  <section id="formulario" style="display: none;">
+    <h2>Cadastro de Planta</h2>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" required />
 
-            <label for="tipo">Tipo:</label>
-            <input type="text" id="tipo" required>
+    <label for="tipo">Tipo de Planta:</label>
+    <select id="tipo" required>
+      <option value="">Selecione</option>
+      <option value="Interior">Interior</option>
+      <option value="Exterior">Exterior</option>
+    </select>
 
-            <label for="frequencia">Frequência de Rega:</label>
-            <input type="number" id="frequencia" required>
+    <label for="frequencia">Frequência de rega (dias):</label>
+    <input type="number" id="frequencia" required />
 
-            <div id="campo-local">
-                <label for="local">Local:</label>
-                <input type="text" id="local">
-            </div>
+    <button onclick="salvarPlanta()">Salvar</button>
+  </section>
 
-            <button type="submit">Salvar</button>
-        </form>
-    </section>
+  <section id="lista" style="display: none;">
+    <h2>Plantas Cadastradas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Frequência (dias)</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-lista"></tbody>
+    </table>
+  </section>
 
-    <section id="lista" style="display:none;">
-        <h3>🌱 Lista de Plantas</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>Frequência</th>
-                    <th>Local</th>
-                </tr>
-            </thead>
-            <tbody id="tabela-corpo"></tbody>
-        </table>
-    </section>
+  <section id="deletar" style="display: none;">
+    <h2>Deletar Planta</h2>
+    <label for="nome-deletar">Nome da planta:</label>
+    <input type="text" id="nome-deletar" />
+    <button onclick="deletarPlanta()">Deletar</button>
+  </section>
 
-    <script src="script.js"></script>
+  <section id="controle-rega" style="display:none;">
+    <h2>Controle de Rega</h2>
+    <label for="planta-rega">Selecione a planta:</label>
+    <select id="planta-rega"></select>
+
+    <label for="data-rega">Última rega:</label>
+    <input type="date" id="data-rega" />
+
+    <button onclick="salvarDataRega()">Salvar</button>
+  </section>
+
+  <!-- Nova seção para mostrar o tempo para próxima rega -->
+  <section id="lista-tempo-rega" style="display:none;">
+    <h2>Tempo para Próxima Rega</h2>
+    <ul id="lista-regas"></ul>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
